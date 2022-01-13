@@ -6,8 +6,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+var myCtx *pulumi.Context
+
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
+		myCtx = ctx
+
 		// Create an Azure Resource Group
 		resourceGroup, err := resources.NewResourceGroup(ctx, "resourceGroup", nil)
 		if err != nil {
@@ -45,4 +49,18 @@ func main() {
 
 		return nil
 	})
+}
+
+func getStorageKeys(args []interface{}) (string, error) {
+	resourceGroupName := args[0].(string)
+	accountName := args[1].(string)
+	accountKeys, err := storage.ListStorageAccountKeys(myCtx, &storage.ListStorageAccountKeysArgs{
+		ResourceGroupName: resourceGroupName,
+		AccountName:       accountName,
+	})
+	if err != nil {
+		return "", err
+	}
+
+	return accountKeys.Keys[0].Value, nil
 }
