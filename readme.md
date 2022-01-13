@@ -9,9 +9,9 @@ This is a standard `hello world` style Pulumi program for Azure straight from th
 https://www.pulumi.com/registry/packages/azure/installation-configuration/
 ```
 
-- Clone repo
-- Change current working directory to git repo
+- Clone repo and change current working directory to git repo
 ```
+git clone git@github.com:katasec/pulumi-azure-helloworld.git
 cd pulumi-azure-helloworld
 ```
 - Setup stack name. The format is `org name/stack name/env`
