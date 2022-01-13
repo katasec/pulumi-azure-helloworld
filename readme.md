@@ -4,7 +4,16 @@ This is a standard `hello world` style Pulumi program for Azure straight from th
 
 # To run this:
 
+- Setup your Azure Creds with Pulumi by following this [guide](https://www.pulumi.com/registry/packages/azure/installation-configuration/)
+```
+https://www.pulumi.com/registry/packages/azure/installation-configuration/
+```
+
 - Clone repo
+- Change current working directory to git repo
+```
+cd pulumi-azure-helloworld
+```
 - Setup stack name. The format is `org name/stack name/env`
 ```
 pulumi new azure-go -s katasec/pulumi-azure-helloworld/dev
