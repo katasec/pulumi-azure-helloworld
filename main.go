@@ -7,9 +7,12 @@ import (
 )
 
 func main() {
+	location := "SouthEastAsia"
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		// Create an Azure Resource Group
-		resourceGroup, err := resources.NewResourceGroup(ctx, "resourceGroup", nil)
+		resourceGroup, err := resources.NewResourceGroup(ctx, "resourceGroup", &resources.ResourceGroupArgs{
+			Location: pulumi.String(location),
+		})
 		if err != nil {
 			return err
 		}
